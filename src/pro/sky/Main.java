@@ -6,33 +6,32 @@ public class Main {
     public static void main(String[] args) {
         task5();
         task6();
-        task7();
-        task8();
+        task7v1();
+        task7v2();
+        task8v1();
+        task8v2();
 
     }
 
-    public static void task5() {
+    private static void task5() {
         String fullName = "Ivanov Ivan Ivanovich";
-        String firstName = "";
-        String middleName = "";
-        String lastName = "";
         int indexValueFirst = fullName.indexOf(" ");
         int indexValueLast = fullName.lastIndexOf(" ");
-        lastName = lastName + fullName.substring(0, indexValueFirst);
-        firstName = firstName + fullName.substring(indexValueFirst, indexValueLast);
-        middleName = middleName + fullName.substring(indexValueLast);
-        System.out.println("Имя сотрудника —" + firstName);
+        String lastName = fullName.substring(0, indexValueFirst);
+        String firstName = fullName.substring(indexValueFirst + 1, indexValueLast);
+        String middleName = fullName.substring(indexValueLast + 1);
+        System.out.println("Имя сотрудника — " + firstName);
         System.out.println("Фамилия сотрудника — " + lastName);
-        System.out.println("Отчество сотрудника —" + middleName);
+        System.out.println("Отчество сотрудника — " + middleName);
     }
 
-    public static String changeCharInPosition(int position, char ch, String str) {
+    private static String changeCharInPosition(int position, char ch, String str) {
         char[] charArray = str.toCharArray();
         charArray[position] = ch;
         return new String(charArray);
     }
 
-    public static void task6() {
+    private static void task6() {
 
         String fullName = "ivanov ivan ivanovich";
         String[] words = fullName.split(" ");
@@ -49,7 +48,19 @@ public class Main {
         System.out.println("Верное написание Ф. И. О. сотрудника с заглавных букв — " + fullNameFixed);
     }
 
-    public static void task7() {
+    private static void task7v1() {
+
+        String firstString = "135";
+        String secondString = "246";
+        StringBuilder sb1 = new StringBuilder(firstString);
+        StringBuilder sbResult = new StringBuilder();
+        for (int i = 0; i < sb1.length(); i++) {
+            sbResult.append(firstString.charAt(i)).append(secondString.charAt(i));
+        }
+        System.out.println("Данные строки — " + sbResult);
+    }
+
+    private static void task7v2() {
 
         String firstString = "135";
         String secondString = "246";
@@ -62,7 +73,22 @@ public class Main {
         System.out.println("Данные строки — " + sb1);
     }
 
-    public static void task8() {
+
+    private static void task8v1() {
+
+        String withDuplicates = "aabccddefgghiijjkk";
+        StringBuilder result = new StringBuilder();
+        char[] charWithDuplicates = withDuplicates.toCharArray();
+        for (int i = 0; i < withDuplicates.length() - 1; i++) {
+            if (charWithDuplicates[i] == charWithDuplicates[i + 1] &&
+                    !result.toString().contains(String.valueOf(charWithDuplicates[i]))) {
+                result.append(charWithDuplicates[i]);
+            }
+        }
+        System.out.println(result);
+    }
+
+    private static void task8v2() {
 
         String withDuplicates = "aabccddefgghiijjkk";
         char[] charWithDuplicates = withDuplicates.toCharArray();
@@ -76,6 +102,3 @@ public class Main {
         }
     }
 }
-
-//acdgijk
-//acdgijk.
